@@ -62,7 +62,7 @@ public class UserRole implements Serializable {
 	}
 
 	/**
-	 * This Method Returns listOf UserRoles For All Active Users
+	 * This Method Returns listOf <UserRole> for Active <User>
 	 */
 	public synchronized static List<UserRole> userRolesListOf() {
 		Criteria roles = AppContext.getContext().createCriteria(UserRole.class,
