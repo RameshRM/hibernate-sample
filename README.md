@@ -12,7 +12,7 @@ git clone https://github.com/RameshRM/hibernate-sample.git
 ``
 mvn install
 ``
-> This is a `maven` project, the dependencies are maitained @ `pom.xml` you dont need any JARs in your bin or in the classpath
+> This is a `maven` project, the dependencies are maitained @ [`pom.xml`](https://github.com/RameshRM/hibernate-sample/blob/master/pom.xml#L22) you dont need any JARs in your bin or in the classpath
 
 ### Install maven
 
