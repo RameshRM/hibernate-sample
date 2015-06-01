@@ -32,6 +32,15 @@ mvn install
 	}
 ```
 
+The above query is as good as 
+
+```SQL
+
+	SELECT * 
+	FROM UserRoles UR
+	WHERE EXISTS (SELECT 1 FROM User U WHERE U.IsSuppressed = 0 AND WHERE UR.UserId = U.UserId)
+```
+
 > This example is just a How to , The DB connection and the tables are fictious.
 
 
