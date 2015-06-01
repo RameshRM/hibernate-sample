@@ -1,6 +1,7 @@
 package com.mahadevanr.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,9 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Property;
@@ -66,7 +64,7 @@ public class UserRole implements Serializable {
 	/**
 	 * This Method Returns listOf UserRoles For All Active Users
 	 */
-	public synchronized static void userRolesListOf() {
+	public synchronized static List<UserRole> userRolesListOf() {
 		Criteria roles = AppContext.getContext().createCriteria(UserRole.class,
 				"userroles");
 		DetachedCriteria users = DetachedCriteria.forClass(User.class, "users");
@@ -75,7 +73,7 @@ public class UserRole implements Serializable {
 				"userRoles.userId"));
 		roles.add(Subqueries.exists(users.setProjection(Projections
 				.property("userId"))));
-		return;
+		return roles.list();
 	}
-	
+
 }
