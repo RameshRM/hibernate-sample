@@ -19,7 +19,10 @@ mvn install
 ## Example
 
 ```Java
-	public synchronized static void userRolesListOf() {
+	/**
+	 * This Method Returns listOf UserRoles For All Active Users
+	 */
+	public synchronized static List<UserRole> userRolesListOf() {
 		Criteria roles = AppContext.getContext().createCriteria(UserRole.class,
 				"userroles");
 		DetachedCriteria users = DetachedCriteria.forClass(User.class, "users");
@@ -28,7 +31,7 @@ mvn install
 				"userRoles.userId"));
 		roles.add(Subqueries.exists(users.setProjection(Projections
 				.property("userId"))));
-		return;
+		return roles.list();
 	}
 ```
 
